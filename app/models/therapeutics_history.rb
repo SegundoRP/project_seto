@@ -1,2 +1,0 @@
-class TherapeuticsHistory < ApplicationRecord
-end
