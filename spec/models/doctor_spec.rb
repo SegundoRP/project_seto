@@ -9,7 +9,7 @@ RSpec.describe Doctor, type: :model do
       should validate_presence_of(:profession)
       should validate_presence_of(:specialty)
       should validate_presence_of(:college_number)
-      # should validate_presence_of(:user_id)
+      should validate_presence_of(:user_id)
     end
 
     it 'validate relations' do
