@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_24_031405) do
+ActiveRecord::Schema.define(version: 2022_06_24_060941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2022_06_24_031405) do
     t.float "price"
     t.index ["doctor_id"], name: "index_consultations_on_doctor_id"
     t.index ["patient_id"], name: "index_consultations_on_patient_id"
+  end
+
+  create_table "diagnostics", force: :cascade do |t|
+    t.text "description"
+    t.bigint "patient_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["patient_id"], name: "index_diagnostics_on_patient_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -74,11 +82,9 @@ ActiveRecord::Schema.define(version: 2022_06_24_031405) do
   create_table "treatments", force: :cascade do |t|
     t.interval "duration"
     t.date "start_time"
-    t.bigint "consultation_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "about"
-    t.index ["consultation_id"], name: "index_treatments_on_consultation_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,7 +104,7 @@ ActiveRecord::Schema.define(version: 2022_06_24_031405) do
 
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "patients"
+  add_foreign_key "diagnostics", "patients"
   add_foreign_key "doctors", "users"
   add_foreign_key "therapeutic_histories", "patients"
-  add_foreign_key "treatments", "consultations"
 end
