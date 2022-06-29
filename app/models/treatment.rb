@@ -1,5 +1,5 @@
 class Treatment < ApplicationRecord
-  belongs_to :consultation
+  belongs_to :diagnostic
 
-  validates :duration, :start_time, :about, :consultation_id, presence: true
+  validates :duration, :start_time, :about, presence: true
 end
