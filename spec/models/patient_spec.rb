@@ -7,9 +7,15 @@ RSpec.describe Patient, type: :model do
       should validate_presence_of(:last_name)
       should validate_presence_of(:age)
       should validate_presence_of(:email)
-      should validate_presence_of(:name)
+      should validate_presence_of(:phone)
+      should validate_presence_of(:address)
+      should validate_presence_of(:phone)
+    end
 
-
+    it 'validate relations' do
+      should have_many(:consultations)
+      should have_many(:diagnostics)
+      should have_one(:therapeutic_history)
     end
   end
 end
