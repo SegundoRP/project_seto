@@ -9,7 +9,7 @@ RSpec.describe Treatment, type: :model do
     end
 
     it 'validate relations' do
-      belong_to(:consultation)
+      should belong_to(:diagnostic)
     end
   end
 end
