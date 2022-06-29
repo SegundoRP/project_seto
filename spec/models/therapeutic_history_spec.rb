@@ -9,7 +9,7 @@ RSpec.describe Therapeutic_history, type: :model do
     end
 
     it 'validate relations' do
-      belong_to(:patient)
+      should belong_to(:patient)
     end
   end
 end
