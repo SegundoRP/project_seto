@@ -7,13 +7,13 @@ RSpec.describe Consultation, type: :model do
       should validate_presence_of(:status)
       should validate_presence_of(:summary)
       should validate_presence_of(:reason_consultation)
-      should validate_presence_of(:type_consultation)
       should validate_presence_of(:price)
     end
 
     it 'validate relations' do
       should belong_to(:doctor)
       should belong_to(:patient)
+      should belong_to(:type_of_service)
     end
   end
 end
