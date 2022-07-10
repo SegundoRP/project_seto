@@ -298,7 +298,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails (~> 6.2)
   faker (~> 2.21)
-  font-awesome-sass
+  font-awesome-sass (~> 6.1, >= 6.1.1)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg (~> 1.1)
