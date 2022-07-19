@@ -45,15 +45,6 @@
    box-shadow: 0 0.05rem 1.5rem 0 rgba(58, 59, 69, 0.08) !important;
  }
 
- .card-dashboard-effects {
-   font-size: 14px;
-   transition: all 0.4s ease-in-out;
-
-   &:hover {
-     transform: translateY(-5px) translateX(5px) scale(1.05);
-     box-shadow: -5px 5px 10px 2px rgba(0, 0, 0, 0.05);
-   }
- }
 
 
 
@@ -65,108 +56,7 @@
 
 
 
-//  dashboard
 
-.charts-container {
-  // margin-top: 11rem;
-  min-height: 450px;
-
-  .line-chart,
-  .pie-chart {
-    display: flex;
-    align-items: center;
-  }
-}
-
-.stock-alert {
-  color: #F20F38;
-}
-
-.dashboard-table {
-  font-size: 14px;
-  width: 95%;
-  border-collapse: separate;
-  border-spacing: 0 1em;
-
-  td {
-    // padding: 16px 12px;
-    max-height: 55px;
-    padding: 0;
-  }
-
-  tr td:first-child {
-    border-radius: 10px 0 0 10px;
-  }
-
-  // tr td:first-child img {
-  //   // object-fit: cover;
-  // }
-
-  tbody tr {
-    max-height: 55px;
-    // border-bottom: 1px solid #c3c3c3;
-    // background-color: white;
-  }
-
-  .name-column {
-    color: #4e4e4e;
-  }
-
-  .column-info {
-    min-width: 120px;
-    text-align: center;
-    vertical-align: middle;
-  }
-}
-
-.filter-products {
-  width: 80%;
-  margin: 0 auto;
-  text-align: end;
-}
-
-.firstrow-dashboard {
-  .card {
-    color: red;
-  }
-
-  .card-body {
-    padding: 0.35rem;
-  }
-
-}
-
-.border-left-low-stock {
-  border-left: 0.25rem solid #F87B92;
-}
-
-.border-left-profit {
-  border-left: 0.25rem solid #F20F38;
-}
-
-.border-left-earnigs {
-  border-left: 0.25rem solid rgba(1, 52, 64, 0.8);
-}
-
-.border-left-ticket {
-  border-left: 0.25rem solid #013440;
-}
-
-.text-card1-dashboard {
-  color: #F87B92;
-}
-
-.text-card2-dashboard {
-  color: #F20F38;
-}
-
-.text-card3-dashboard {
-  color: rgba(1, 52, 64, 0.8);
-}
-
-.text-card4-dashboard {
-  color: #013440;
-}
 
 
 
