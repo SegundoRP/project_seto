@@ -127,8 +127,14 @@
   padding-right: $grid-gutter-width;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1199px) {
   .card-table-consultation{
     width: 98%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .card-table-consultation {
+    width: 66%;
   }
 }
