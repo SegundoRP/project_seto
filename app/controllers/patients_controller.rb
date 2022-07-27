@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: %i[show]
+  before_action :set_patient, only: %i[show edit update destroy]
 
   def index
     @patients = Patient.all
@@ -9,7 +9,7 @@ class PatientsController < ApplicationController
   end
 
   def new
-
+    @patient = Patient.new
   end
 
   def create
@@ -17,7 +17,6 @@ class PatientsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
