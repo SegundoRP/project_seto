@@ -1,0 +1,26 @@
+<main>
+  <div>
+    <a>Agregar paciente</a>
+  </div>
+
+  <div>
+    <a>Agendar consulta</a>
+  </div>
+
+  <table>
+    <tr>
+      <thead>Id</thead>
+      <thead>Nombre</thead>
+      <thead>Edad</thead>
+      <thead>Teléfono</thead>
+    </tr>
+    <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.id %></td>
+      <td><%= patient.fullname %></td>
+      <td><%= patient.age %></td>
+      <td><%= patient.phone %></td>
+    </tr>
+    <% end %>
+  </table>
+</main>
