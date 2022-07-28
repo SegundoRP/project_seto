@@ -4,4 +4,8 @@ class Patient < ApplicationRecord
   has_one :therapeutic_history
 
   validates :first_name, :last_name, :age, :email, :phone, :address, presence: true
+
+  def fullname
+    "#{self.name} #{self.last_name}"
+  end
 end
