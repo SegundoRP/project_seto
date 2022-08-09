@@ -7,20 +7,24 @@
     <a>Agendar consulta</a>
   </div>
 
-  <table>
-    <tr>
-      <thead>Id</thead>
-      <thead>Nombre</thead>
-      <thead>Edad</thead>
-      <thead>Teléfono</thead>
-    </tr>
-    <% @patients.each do |patient| %>
-    <tr>
-      <td><%= patient.id %></td>
-      <td><%= patient.fullname %></td>
-      <td><%= patient.age %></td>
-      <td><%= patient.phone %></td>
-    </tr>
-    <% end %>
-  </table>
+  <div class="row">
+    <div class="col-10 col-sm-8 col-md-8 col-lg-6">
+      <table>
+        <tr>
+          <thead>Id</thead>
+          <thead>Nombre</thead>
+          <thead>Edad</thead>
+          <thead>Teléfono</thead>
+        </tr>
+        <% @patients.each do |patient| %>
+        <tr>
+          <td><%= patient.id %></td>
+          <td><%= patient.fullname %></td>
+          <td><%= patient.age %></td>
+          <td><%= patient.phone %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </main>
