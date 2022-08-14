@@ -15,11 +15,12 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-
-    if @patient.save
-      redirect_to patient_path(@patient)
-    else
-      render :new
+    respond_to do |format|
+      if @patient.save
+        format.html { redirect_to patient_path(@patient), notice: 'El paciente fue creado exitosamente' }
+      else
+        render :new
+      end
     end
   end
 
