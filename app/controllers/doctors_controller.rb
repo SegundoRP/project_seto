@@ -1,6 +1,10 @@
 class DiagnosticsController < ApplicationController
-  before_action :set_diagnostic, only: %i[show edit update destroy]
+  before_action :set_doctor, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!
+
+  def index
+    @doctors = Doctor.all
+  end
 
   def show
   end
