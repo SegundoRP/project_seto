@@ -10,7 +10,7 @@ class DiagnosticsController < ApplicationController
   end
 
   def new
-    @diagnostic = Diagnostic.new
+    @doctor = Doctor.new
   end
 
   def create
