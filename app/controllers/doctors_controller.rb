@@ -14,10 +14,10 @@ class DiagnosticsController < ApplicationController
   end
 
   def create
-    @diagnostic = Diagnostic.new(diagnostic_params)
+    @doctor = Doctor.new(doctor_params)
     respond_to do |format|
-      if @diagnostic.save
-        format.html { redirect_to diagnostic_path(@diagnostic), notice: 'El diagnóstico fue creado exitosamente' }
+      if @doctor.save
+        format.html { redirect_to doctor_path(@doctor), notice: 'El doctor fue creado exitosamente' }
       else
         render :new
       end
