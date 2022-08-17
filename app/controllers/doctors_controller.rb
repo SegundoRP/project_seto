@@ -28,8 +28,8 @@ class DiagnosticsController < ApplicationController
   end
 
   def update
-    if @diagnostic.update(diagnostic_params)
-      redirect_to diagnostic_path(@diagnostic)
+    if @doctor.update(doctor_params)
+      redirect_to doctor_path(@doctor)
     else
       render :edit
     end
