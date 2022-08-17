@@ -36,10 +36,10 @@ class DiagnosticsController < ApplicationController
   end
 
   def destroy
-    @diagnostic.destroy
+    @doctor.destroy
 
     respond_to do |format|
-      format.html { redirect_to diagnostic_path(@diagnostic), notice: 'El diagnóstico fue eliminado exitosamente' }
+      format.html { redirect_to doctor_path(@doctor), notice: 'El doctor fue eliminado exitosamente' }
     end
   end
 
