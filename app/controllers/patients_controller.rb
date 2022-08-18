@@ -50,7 +50,7 @@ class PatientsController < ApplicationController
   end
 
   def patient_params
-    params.require(:patient).permit(:name, :last_name, :age, :email, :phone, :address, :civil_state,
+    params.require(:patient).permit(:first_name, :last_name, :age, :email, :phone, :address, :civil_state,
                                     :children, :instruction_grade, :occupation,
                                     consultations_attributes: %i[date doctor_id patient_id status
                                                                  summary reason_consultation type_of_service_id])
