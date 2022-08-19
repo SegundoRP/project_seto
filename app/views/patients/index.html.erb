@@ -15,6 +15,7 @@
           <thead>Nombre</thead>
           <thead>Edad</thead>
           <thead>Teléfono</thead>
+          <thead colspan="2">Acciones</thead>
         </tr>
         <% @patients.each do |patient| %>
         <tr>
@@ -22,6 +23,7 @@
           <td><%= patient.fullname %></td>
           <td><%= patient.age %></td>
           <td><%= patient.phone %></td>
+          <td><%= link_to 'Editar', edit_patient_path(patient) %></td>
         </tr>
         <% end %>
       </table>
