@@ -1,5 +1,8 @@
 <h1>Agregar paciente</h1>
 
 <%= form_with model: @patient do |f| %>
+  <%= f.label 'Nombre' %>
   <%= f.text_field :first_name %>
+  <%= f.label 'Apellidos' %>
+  <%= f.text_field :last_name %>
 <% end %>
