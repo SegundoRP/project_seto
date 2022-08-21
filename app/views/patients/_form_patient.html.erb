@@ -11,11 +11,13 @@
   <%= f.text_field :address %>
   <%= f.label 'Teléfono' %>
   <%= f.text_field :phone %>
-  <%= f.submit 'Crear' %>
 
   <% if current_page?(new_patient_path) %>
+    <p>hola</p>
     <%= f.fields_for :consultations do |c| %>
-      <%= c.text_field :date %>
+      <%= c.text_field :summary %>
+        <%= f.collection_select :doctor, Doctor.order(:first_name), :id, :first_name, include_blank: true %>
     <% end %>
   <% end %>
+  <%= f.submit 'Crear' %>
 <% end %>
