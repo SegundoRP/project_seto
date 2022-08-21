@@ -12,4 +12,10 @@
   <%= f.label 'Teléfono' %>
   <%= f.text_field :phone %>
   <%= f.submit 'Crear' %>
+
+  <% if current_page?(new_patient_path) %>
+    <%= f.fields_for :consultations do |c| %>
+      <%= c.text_field :date %>
+    <% end %>
+  <% end %>
 <% end %>
