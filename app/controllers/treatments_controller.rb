@@ -1,7 +1,20 @@
 class TreatmentsController < ApplicationController
-skip_before_action :authenticate_user!
+  before_action :set_treatment, only: %i[show]
+  skip_before_action :authenticate_user!
 
   def show
+  end
+
+  def create
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
   end
 
   private
@@ -11,6 +24,6 @@ skip_before_action :authenticate_user!
   end
 
   def treatment_params
-
+    params.require(:treatment).permit(:duration, :start_time, :about, :diagnostic_id)
   end
 end
