@@ -8,4 +8,5 @@ Rails.application.routes.draw do
     resources :diagnostics
   end
   resources :consultations
+  resources :doctors
 end
