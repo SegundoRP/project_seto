@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'pages#dashboard'
   resources :patients do
-    resources :diagnostics
+    resources :diagnostics do
+      resources :treatments
+    end
     resources :therapeutics_history
   end
   resources :consultations
