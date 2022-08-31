@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   end
   resources :consultations
   resources :doctors
+  resources :type_of_services
 end
