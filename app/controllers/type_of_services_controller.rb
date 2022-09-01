@@ -10,15 +10,29 @@ class TypeOfServicesController < ApplicationController
   end
 
   def new
-
+    @type_of_service = TypeOfService.new
   end
 
   def create
+    @type_of_service = TypeOfService.new(type_of_service_params)
 
+    respond_to do |format|
+      if @type_of_service.save
+        format.html { redirect_to type_of_service_path(@type_of_service), notice: 'El tipo de servicio fue creado exitosamente' }
+      else
+        format.html { render :new, notice: 'No se pudo crear el tipo de servicio' }
+      end
+    end
   end
 
   def update
-
+    respond_to do |format|
+      if @type_of_service.update(type_of_service_params)
+        format.html { redirect_to type_of_service_path(@type_of_service), notice: 'El tipo de servicio fue actualizado' }
+      else
+        format.html { render :new, notice: 'No se pudo actualizar el tipo de servicio' }
+      end
+    end
   end
 
   def destroy
@@ -36,7 +50,6 @@ class TypeOfServicesController < ApplicationController
   end
 
   def type_of_service_params
-
+    params.require(:type_of_service).permit(:name_of_service, :price)
   end
-
 end
