@@ -15,11 +15,13 @@ class ConsultationsController < ApplicationController
 
   def create
     @consultation = Consultation.new(consultation_params)
+    respond_to do |format|
+      if @consultation.save
+        format.html {redirect_to consultation_path(@consultation), notice: 'La consulta fue creada exitosamente'}
+      else
+        format.html {render :new, notice: 'La consulta no se pudo crear'}
+      end
 
-    if @consultation.save
-      redirect_to consultation_path(@consultation)
-    else
-      render :new
     end
   end
 

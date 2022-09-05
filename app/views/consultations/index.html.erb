@@ -1,5 +1,7 @@
 <div>
   <div>
-    <p></p>
+    <%= @consultations.each do |consultation| %>
+      <%= consultation.date %>
+    <% end %>
   </div>
 </div>
