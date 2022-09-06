@@ -44,7 +44,7 @@ class ConsultationsController < ApplicationController
       if @consultation.destroy
         format.html { redirect_to consultations_path, notice: 'La consulta fue eliminada exitosamente' }
       else
-        format.html
+        format.html { render :show, alert: flash.now[:alert] = 'No se pudo eliminar la consulta' }
       end
     end
   end
