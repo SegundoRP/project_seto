@@ -4,6 +4,8 @@ class ConsultationsController < ApplicationController
 
   def index
     @consultations = Consultation.all
+
+    flash.now[:notice] = "Tenemos #{@consultations.size} consultas en total."
   end
 
   def show
@@ -17,9 +19,9 @@ class ConsultationsController < ApplicationController
     @consultation = Consultation.new(consultation_params)
     respond_to do |format|
       if @consultation.save
-        format.html {redirect_to consultation_path(@consultation), notice: 'La consulta fue creada exitosamente'}
+        format.html { redirect_to consultation_path(@consultation), notice: 'La consulta fue creada exitosamente' }
       else
-        format.html {render :new, notice: 'La consulta no se pudo crear'}
+        format.html { redirect_to new_consultation_path, alert: 'La consulta no se pudo crear' }
       end
 
     end
@@ -29,18 +31,20 @@ class ConsultationsController < ApplicationController
   end
 
   def update
-    if @consultation.update(consultation_params)
-      redirect_to consultation_path(@consultation)
-    else
-      render :edit
+    respond_to do |format|
+      if @consultation.update(consultation_params)
+        format.html { redirect_to consultation_path(@consultation), notice: 'La consulta fue actualizada correctamente' }
+      else
+        format.html { render :edit, alert: 'La consulta no se pudo actualizar' }
+      end
     end
   end
 
   def destroy
-    @consultation.destroy
-
     respond_to do |format|
-      format.html { redirect_to consultations_path, notice: 'La consulta fue eliminada exitosamente' }
+      if @consultation.destroy
+        format.html { redirect_to consultations_path, notice: 'La consulta fue eliminada exitosamente' }
+      end
     end
   end
 
