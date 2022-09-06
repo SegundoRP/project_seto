@@ -21,9 +21,8 @@ class ConsultationsController < ApplicationController
       if @consultation.save
         format.html { redirect_to consultation_path(@consultation), notice: 'La consulta fue creada exitosamente' }
       else
-        format.html { redirect_to new_consultation_path, alert: 'La consulta no se pudo crear' }
+        format.html { render :new, alert: flash.now[:alert] = 'La consulta no se pudo crear' }
       end
-
     end
   end
 
@@ -35,7 +34,7 @@ class ConsultationsController < ApplicationController
       if @consultation.update(consultation_params)
         format.html { redirect_to consultation_path(@consultation), notice: 'La consulta fue actualizada correctamente' }
       else
-        format.html { render :edit, alert: 'La consulta no se pudo actualizar' }
+        format.html { render :edit, alert: flash.now[:alert] = 'La consulta no se pudo actualizar' }
       end
     end
   end
@@ -44,6 +43,8 @@ class ConsultationsController < ApplicationController
     respond_to do |format|
       if @consultation.destroy
         format.html { redirect_to consultations_path, notice: 'La consulta fue eliminada exitosamente' }
+      else
+        format.html
       end
     end
   end
