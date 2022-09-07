@@ -15,7 +15,7 @@ class DiagnosticsController < ApplicationController
       if @diagnostic.save
         format.html { redirect_to diagnostic_path(@diagnostic), notice: 'El diagnóstico fue creado exitosamente' }
       else
-        render :new
+        format.html { render :new, alert: flash.now[:alert] = 'El diagnóstico no pudo ser creado' }
       end
     end
   end
@@ -24,18 +24,22 @@ class DiagnosticsController < ApplicationController
   end
 
   def update
-    if @diagnostic.update(diagnostic_params)
-      redirect_to diagnostic_path(@diagnostic)
-    else
-      render :edit
+    respond_to do |format|
+      if @diagnostic.update(diagnostic_params)
+        format.html { redirect_to diagnostic_path(@diagnostic), notice: 'El diagnóstico fue actualizado exitosamente' }
+      else
+        format.html { render :edit, alert: flash.now[:alert] = 'El diagnóstico no pudo ser actualizado' }
+      end
     end
   end
 
   def destroy
-    @diagnostic.destroy
-
     respond_to do |format|
-      format.html { redirect_to diagnostic_path(@diagnostic), notice: 'El diagnóstico fue eliminado exitosamente' }
+      if @diagnostic.destroy
+        format.html { redirect_to diagnostic_path(@diagnostic), notice: 'El diagnóstico fue eliminado exitosamente' }
+      else
+        format.html { render :show, alert: flash.now[:alert] = 'El diagnóstico no pudo ser eliminado' }
+      end
     end
   end
 
