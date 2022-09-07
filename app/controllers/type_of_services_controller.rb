@@ -4,6 +4,8 @@ class TypeOfServicesController < ApplicationController
 
   def index
     @type_of_services = TypeOfService.all
+
+    flash.now[:notice] = "Tienes #{@type_of_services.count}" + ' servicio'.pluralize(@type_of_services.count)
   end
 
   def show
@@ -20,7 +22,7 @@ class TypeOfServicesController < ApplicationController
       if @type_of_service.save
         format.html { redirect_to type_of_service_path(@type_of_service), notice: 'El tipo de servicio fue creado exitosamente' }
       else
-        format.html { render :new, notice: 'No se pudo crear el tipo de servicio' }
+        format.html { render :new, alert: flash.now[:alert] = 'No se pudo crear el tipo de servicio' }
       end
     end
   end
@@ -30,7 +32,7 @@ class TypeOfServicesController < ApplicationController
       if @type_of_service.update(type_of_service_params)
         format.html { redirect_to type_of_service_path(@type_of_service), notice: 'El tipo de servicio fue actualizado' }
       else
-        format.html { render :new, notice: 'No se pudo actualizar el tipo de servicio' }
+        format.html { render :new, alert: flash.now[:alert] = 'No se pudo actualizar el tipo de servicio' }
       end
     end
   end
@@ -39,6 +41,8 @@ class TypeOfServicesController < ApplicationController
     respond_to do |format|
       if @type_of_service.destroy
         format.html { redirect_to type_of_services_path, notice: 'El tipo de servicio fue eliminado' }
+      else
+        format.html { render :show, alert: flash.now[:alert] = 'No se pudo eliminar el tipo de servicio' }
       end
     end
   end
