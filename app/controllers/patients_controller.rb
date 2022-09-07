@@ -4,6 +4,8 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
+
+    flash.now[:notice] = "Tienes #{@patients.size}" + " paciente".pluralize(@patients.count)
   end
 
   def show
@@ -16,31 +18,36 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-    # respond_to do |format|
+    respond_to do |format|
       if @patient.save
-        redirect_to patient_path(@patient), notice: 'El paciente fue creado exitosamente'
+        format.html { redirect_to patient_path(@patient), notice: 'El paciente fue creado exitosamente' }
       else
-        render :new
+        format.html { render :new, alert: flash.now[:alert] = 'El paciente no se pudo crear' }
       end
-    # end
+    end
   end
 
   def edit
   end
 
   def update
-    if @patient.update(patient_params)
-      redirect_to patient_path(@patient)
-    else
-      render :edit
+    respond_to do |format|
+      if @patient.update(patient_params)
+        format.html { redirect_to patient_path(@patient), notice: 'El paciente se actualizó correctamente' }
+      else
+        format.html { render :edit, alert: flash.now[:alert] = 'El paciente no se pudo actualizar' }
+      end
     end
   end
 
   def destroy
-    @patient.destroy
 
     respond_to do |format|
-      format.html { redirect_to patients_path, notice: 'El paciente fue eliminado exitosamente' }
+      if @patient.destroy
+        format.html { redirect_to patients_path, notice: 'El paciente fue eliminado exitosamente' }
+      else
+        format.html { render :show, alert: flash.now[:alert] = 'No se pudo eliminar el paciente' }
+      end
     end
   end
 

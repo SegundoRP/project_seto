@@ -5,7 +5,7 @@ class ConsultationsController < ApplicationController
   def index
     @consultations = Consultation.all
 
-    flash.now[:notice] = "Tenemos #{@consultations.size} consultas en total."
+    flash.now[:notice] = "Tienes #{helpers.pluralize(@consultations.count, 'consulta', plural: 'consultas')} en total"
   end
 
   def show
