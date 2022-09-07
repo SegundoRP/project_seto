@@ -1,9 +1,11 @@
-class DiagnosticsController < ApplicationController
+class DoctorsController < ApplicationController
   before_action :set_doctor, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!
 
   def index
     @doctors = Doctor.all
+
+    flash.now[:notice] = "Tenemos #{@doctors.count}" + "especialista".pluralize(@doctors.count)
   end
 
   def show
