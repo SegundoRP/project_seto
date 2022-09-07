@@ -5,7 +5,7 @@ class DoctorsController < ApplicationController
   def index
     @doctors = Doctor.all
 
-    flash.now[:notice] = "Tenemos #{@doctors.count}" + "especialista".pluralize(@doctors.count)
+    flash.now[:notice] = "Tienes #{@doctors.count}" + " especialista".pluralize(@doctors.count)
   end
 
   def show
@@ -19,9 +19,9 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.new(doctor_params)
     respond_to do |format|
       if @doctor.save
-        format.html { redirect_to doctor_path(@doctor), notice: 'El doctor fue creado exitosamente' }
+        format.html { redirect_to doctor_path(@doctor), notice: 'El especialista fue creado exitosamente' }
       else
-        render :new
+        format.html { render :new, alert: flash.now[:alert] = 'El especialista no se pudo crear' }
       end
     end
   end
@@ -30,18 +30,22 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    if @doctor.update(doctor_params)
-      redirect_to doctor_path(@doctor)
-    else
-      render :edit
+    respond_to do |format|
+      if @doctor.update(doctor_params)
+        format.html { redirect_to doctor_path(@doctor), notice: 'El especialista se actualizó correctamente' }
+      else
+        format.html { render :edit, alert: flash.now[:alert] = 'El especialista no se pudo actualizar' }
+      end
     end
   end
 
   def destroy
-    @doctor.destroy
-
     respond_to do |format|
-      format.html { redirect_to doctor_path(@doctor), notice: 'El doctor fue eliminado exitosamente' }
+      if @doctor.destroy
+        format.html { redirect_to doctor_path(@doctor), notice: 'El especialista fue eliminado exitosamente' }
+      else
+        format.html { render :show, alert: flash.now[:alert] = 'No se pudo eliminar al especialista' }
+      end
     end
   end
 
