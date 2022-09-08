@@ -5,7 +5,7 @@ class Patient < ApplicationRecord
 
   accepts_nested_attributes_for :consultations
 
-  # validates :first_name, :last_name, :age, :email, :phone, :address, presence: true
+  validates :first_name, :last_name, :age, :email, :phone, :address, presence: true
 
   def fullname
     "#{first_name} #{last_name}"
