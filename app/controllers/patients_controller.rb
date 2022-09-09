@@ -13,7 +13,7 @@ class PatientsController < ApplicationController
 
   def new
     @patient = Patient.new
-    @patient.consultations.new
+    @patient.consultations.build
   end
 
   def create
