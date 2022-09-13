@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'pages#dashboard'
   resources :patients do
     resources :diagnostics do
-      resources :treatments
+      resources :treatments, except: %i[index]
     end
     resources :therapeutics_history, except: %i[index]
   end
