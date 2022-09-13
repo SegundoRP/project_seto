@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     resources :diagnostics do
       resources :treatments
     end
-    resources :therapeutics_history
+    resources :therapeutics_history, except: %i[index]
   end
   resources :consultations
   resources :doctors
-  resources :type_of_services, only: %i[index new create update destroy]
+  resources :type_of_services, except: %i[show]
 end
