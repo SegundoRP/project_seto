@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   end
   resources :consultations
   resources :doctors
-  resources :type_of_services
+  resources :type_of_services, only: %i[index new create update destroy]
 end
