@@ -13,10 +13,15 @@
   <%= f.text_field :phone %>
 
   <% if current_page?(new_patient_path) %>
+    <%= link_to_add_fields "Agregar Consulta", f, :consultations %>
     <%= f.fields_for :consultations do |c| %>
-      <%= c.text_field :summary %>
-      <%= c.collection_select :doctor_id, Doctor.order(:first_name), :id, :first_name, include_blank: true %>
-      <%= c.collection_select :type_of_service_id, TypeOfService.order(:name_of_service), :id, :name_of_service, include_blank: true %>
+      <div class="nested-fields">
+        <%= c.hidden_field :_destroy %>
+        <%= c.text_field :summary %>
+        <%= c.collection_select :doctor_id, Doctor.order(:first_name), :id, :first_name, include_blank: true %>
+        <%= c.collection_select :type_of_service_id, TypeOfService.order(:name_of_service), :id, :name_of_service, include_blank: true %>
+        <%= link_to "Remove", '#', class: "remove_fields" %>
+      <div>
     <% end %>
   <% end %>
   <%= f.submit current_page?(new_patient_path) ? 'Crear' : 'Editar' %>
