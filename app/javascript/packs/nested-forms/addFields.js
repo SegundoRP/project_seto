@@ -12,6 +12,9 @@ class addFields {
     this.links.forEach(link => {
       link.addEventListener('click', e => {
         this.handleClick(link, e)
+        if(document.querySelector('.nested-fields')){
+          link.style.display = 'none'
+        }
       })
     })
   }
