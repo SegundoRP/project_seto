@@ -9,6 +9,7 @@ class removeFields {
     document.addEventListener('click', e => {
       if (e.target && e.target.className == 'remove_fields') {
         this.handleClick(e.target, e)
+        document.querySelector('.add_fields').style.display = 'inline'
       }
     })
   }
