@@ -22,7 +22,7 @@ class PatientsController < ApplicationController
       if @patient.save
         format.html { redirect_to patient_path(@patient), notice: 'El paciente fue creado exitosamente' }
       else
-        format.html { render :new, alert: flash.now[:alert] = 'El paciente no se pudo crear' }
+        format.html { redirect_to new_patient_path, alert: flash.now[:alert] = 'El paciente no se pudo crear' }
       end
     end
   end
