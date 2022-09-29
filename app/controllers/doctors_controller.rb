@@ -17,6 +17,7 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
+    @doctor.user = current_user
     respond_to do |format|
       if @doctor.save
         format.html { redirect_to doctor_path(@doctor), notice: 'El especialista fue creado exitosamente' }
