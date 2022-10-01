@@ -1,0 +1,6 @@
+<h1>Especialistas</h1>
+
+<% @doctors.each do |doctor| %>
+  <%= doctor.first_name %>
+  <%= link_to "Editar", edit_doctor_path(doctor) %>
+<% end %>
