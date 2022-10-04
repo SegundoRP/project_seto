@@ -11,6 +11,18 @@
   <%= f.text_field :address %>
   <%= f.label 'Teléfono' %>
   <%= f.text_field :phone %>
+  <%= f.label 'Nombre' %>
+  <%= f.text_field :first_name %>
+  <%= f.label 'Apellidos' %>
+  <%= f.text_field :last_name %>
+  <%= f.label 'Edad' %>
+  <%= f.text_field :age %>
+  <%= f.label 'Email' %>
+  <%= f.text_field :profession %>
+  <%= f.label 'Dirección' %>
+  <%= f.text_field :specialty %>
+  <%= f.label 'Teléfono' %>
+  <%= f.text_field :college_number %>
 
   <% if current_page?(new_doctor_path) %>
     <%= link_to_add_fields "Agregar Consulta", f, :consultations %>
