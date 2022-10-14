@@ -6,6 +6,7 @@ RSpec.describe Treatment, type: :model do
       should validate_presence_of(:duration)
       should validate_presence_of(:start_time)
       should validate_presence_of(:about)
+      should validate_presence_of(:status)
     end
 
     it 'validate relations' do
