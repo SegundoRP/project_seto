@@ -46,7 +46,7 @@ class PatientsController < ApplicationController
       if @patient.destroy
         format.html { redirect_to patients_path, notice: 'El paciente fue eliminado exitosamente' }
       else
-        format.html { render :show, alert: flash.now[:alert] = 'No se pudo eliminar el paciente' }
+        format.html { render @patient.errors, alert: flash.now[:alert] = 'No se pudo eliminar el paciente' }
       end
     end
   end
