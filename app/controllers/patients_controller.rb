@@ -41,7 +41,6 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-
     respond_to do |format|
       if @patient.destroy
         format.html { redirect_to patients_path, notice: 'El paciente fue eliminado exitosamente' }
