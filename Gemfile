@@ -45,6 +45,7 @@ group :development, :test do  gem 'pry-byebug'
   gem 'rspec-rails', '~> 5.1', '>= 5.1.2'
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 2.21'
+  gem 'solargraph'
 end
 
 group :development do
@@ -58,6 +59,9 @@ group :development do
   gem 'spring'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do

@@ -4,5 +4,5 @@ class Consultation < ApplicationRecord
   belongs_to :type_of_service
 
   validates :date, :status, :summary, :reason_consultation, :doctor, :patient, :type_of_service, presence: true
-  validates :date, :status, :summary, :reason_consultation, presence: { message: 'Debe estar presente' }
+  validates :date, :status, :summary, :reason_consultation, presence: { message: "Debe estar presente" }
 end
